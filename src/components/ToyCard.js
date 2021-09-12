@@ -1,19 +1,28 @@
 import React from "react";
 
-function ToyCard() {
-  return (
-    <div className="card">
-      <h2>{"" /* Toy's Name */}</h2>
-      <img
-        src={"" /* Toy's Image */}
-        alt={"" /* Toy's Name */}
-        className="toy-avatar"
-      />
-      <p>{"" /* Toy's Likes */} Likes </p>
-      <button className="like-btn">Like {"<3"}</button>
-      <button className="del-btn">Donate to GoodWill</button>
-    </div>
-  );
+function ToyCard({ item, addLikes, deleteToy }) {
+	function handleDelete() {
+		console.log("handleDelete");
+		deleteToy(item.id);
+	}
+
+	function handleLikes() {
+		console.log("handleLikes");
+		addLikes(item);
+	}
+	return (
+		<div className="card">
+			<h2>{item.name}</h2>
+			<img src={item.image} alt={item.name} className="toy-avatar" />
+			<p>{item.likes} Likes </p>
+			<button className="like-btn" onClick={handleLikes}>
+				Like
+			</button>
+			<button className="del-btn" onClick={handleDelete}>
+				Donate to GoodWill
+			</button>
+		</div>
+	);
 }
 
 export default ToyCard;
